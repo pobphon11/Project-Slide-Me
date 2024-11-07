@@ -1,7 +1,12 @@
 import './App.css';
 
 function App() {
-	return <div>wirawut</div>;
+
+  return (
+    <div>
+      Test
+    </div>
+  )
 }
 
 export default App;

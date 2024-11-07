@@ -1,13 +1,7 @@
-
-import './App.css'
+import './App.css';
 
 function App() {
-
-  return (
-    <div>
-      Test
-    </div>
-  )
+	return <div>wirawut</div>;
 }
 
-export default App
+export default App;

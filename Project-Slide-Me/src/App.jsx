@@ -1,12 +1,30 @@
+import React from 'react'
+
 
 import './App.css'
-import Home from './Home/Home'
+
+import Layout from './layouts/Layout/Layout'
+import Home from './pages/HomePage/Home'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+
+import { HashRouter, Routes, Route } from 'react-router-dom'
+
+
+
 function App() {
 
   return (
     <div>
-      <h1>pobphon</h1>
-      <Home />
+     <HashRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+        </Route>
+      </Routes>
+     </HashRouter>
     </div>
   )
 }

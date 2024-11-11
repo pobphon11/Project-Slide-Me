@@ -15,7 +15,7 @@ function Layout() {
         <div>
           <CustomNavbar />
             <main>
-                <Outlet />  
+            <Outlet />  
             </main>
           
 

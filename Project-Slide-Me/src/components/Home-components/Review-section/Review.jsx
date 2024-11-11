@@ -19,7 +19,7 @@ function Reviews() {
                         
                     <span><i class="bi bi-person-circle" style={{marginRight: '10px' }}></i></span>
                         <div className="reviewer-info">
-                            <span className="reviewer-name">นาย สมมุติ ตุ๊ดตู่</span>
+                            <span className="reviewer-name" style={{marginRight: '10px' }}>นาย สมมุติ ตุ๊ดตู่</span>
                             <span className="review-date">12/12/2022</span>
                         </div>
                     </div>
@@ -31,7 +31,7 @@ function Reviews() {
                     <div className="review-footer">
                     <span><i class="bi bi-person-circle" style={{marginRight: '10px' }}></i></span>
                         <div className="reviewer-info">
-                            <span className="reviewer-name">นาย สมมุติ ตุ๊ดตู่</span>
+                            <span className="reviewer-name" style={{marginRight: '10px' }}>นาย สมมุติ ตุ๊ดตู่</span>
                             <span className="review-date">23/12/2022</span>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ function Reviews() {
                     <div className="review-footer">
                     <span><i class="bi bi-person-circle" style={{marginRight: '10px' }}></i></span>
                         <div className="reviewer-info">
-                            <span className="reviewer-name">นาย สมมุติ ตุ๊ดตู่</span>
+                            <span className="reviewer-name" style={{marginRight: '10px' }}>นาย สมมุติ ตุ๊ดตู่</span>
                             <span className="review-date">17/12/2022</span>
                         </div>
                     </div>

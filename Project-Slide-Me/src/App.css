@@ -5,6 +5,11 @@
   max-width: auto;
   margin: 0 auto;
   text-align: center;
+ 
+}
+
+main {
+  padding-top: 90px;
 }
 
 

@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-
+import { Link } from "react-router-dom";
 function CustomNavbar() {
   return (
     <div className="Navbar-container">
@@ -19,7 +19,7 @@ function CustomNavbar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <NavDropdown title="การจัดการสิทธิ์" id="basic-nav-dropdown"   >
-                <NavDropdown.Item href="#action/3.1">จัดการสิทธ์ user/driver</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/manage-user">จัดการสิทธ์ user/driver</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="การจัดการบริการ" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">จัดการระยะทาง</NavDropdown.Item>

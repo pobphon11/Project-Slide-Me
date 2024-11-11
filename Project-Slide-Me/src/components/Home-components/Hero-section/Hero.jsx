@@ -13,7 +13,7 @@ function Hero() {
                <div className="btn-Hero">
                    <button className='btn btn-success  btn-xl ' style={{borderRadius: '50px' }} >Contact Me</button>
                </div>
-               <div className="space-test"></div>
+              
            </div>
         </div>
      );

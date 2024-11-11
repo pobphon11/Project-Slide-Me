@@ -1,3 +1,6 @@
+*{
+    font-family: 'Kanit', sans-serif;
+}
 
 
 .reviews-container {
@@ -15,7 +18,7 @@
     padding: 40px 20px;
     text-align: center;
     font-family: Arial, sans-serif;
-    color: #333;
+    
 }
 
 
@@ -24,6 +27,7 @@
     margin-bottom: 70px;
     font-weight: bold;
     color: black;
+    
 }
 
 .latest-reviews {

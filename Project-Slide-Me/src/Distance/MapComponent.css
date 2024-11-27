@@ -1,0 +1,14 @@
+.map-container {
+	border: 1px solid #000000;
+}
+.vehicleType {
+	display: inline-block; /* ทำให้ข้อความเป็นบล็อกในแนวนอน */
+	padding: 10px 20px; /* เพิ่มพื้นที่ภายใน */
+	background-color: #f0f0f0; /* สีพื้นหลัง */
+	color: #333; /* สีข้อความ */
+	border: 1px solid #ccc; /* เส้นขอบ */
+	border-radius: 20px; /* ทำให้มุมโค้ง */
+	font-size: 16px; /* ขนาดตัวอักษร */
+	text-align: center; /* จัดข้อความให้อยู่ตรงกลาง */
+	margin-left: 30rem;
+}

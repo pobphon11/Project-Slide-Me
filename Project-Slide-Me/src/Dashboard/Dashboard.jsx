@@ -10,7 +10,6 @@ import {
 	CartesianGrid,
 	Bar,
 } from 'recharts';
-
 const data = [
 	{ name: 'Page A', uv: 3500 },
 	{ name: 'Page B', uv: 3000 },
@@ -20,9 +19,8 @@ const data = [
 	{ name: 'Page F', uv: 2390 },
 	{ name: 'Page G', uv: 650 },
 ];
-
 const data1 = [
-	{ name: 'จันทร์', Ordernow: 4500, Booking: 1400 },
+	{ name: 'จันทร์', Ordernow: 4000, Booking: 1400 },
 	{ name: 'อังคาร', Ordernow: 3700, Booking: 400 },
 	{ name: 'พุธ', Ordernow: 5550, Booking: 2400 },
 	{ name: 'พฤหัสบดี', Ordernow: 2356, Booking: 1540 },
@@ -32,63 +30,66 @@ const data1 = [
 ];
 
 function Dashboard() {
-	// อ่านค่าจำนวนผู้เข้าใช้จาก localStorage ถ้ามี
-	const storedUserCount = localStorage.getItem('userCount');
-	const storedDriverCount = localStorage.getItem('driverCount');
-	const storedOrderCount = localStorage.getItem('orderCount');
-	const storedRevenueCount = localStorage.getItem('revenueCount');
+	// ใช้ useState เพื่อเก็บค่าผู้เข้าใช้, คนขับ, จำนวนออเดอร์, รายได้
+	const [userCount, setUserCount] = useState(999);
+	const [driverCount, setDriverCount] = useState(450);
+	const [orderCount, setOrderCount] = useState(33);
+	const [revenueCount, setRevenueCount] = useState(9999);
 
-	const initialUserCount = storedUserCount ? parseInt(storedUserCount) : 999;
-	const initialDriverCount = storedDriverCount
-		? parseInt(storedDriverCount)
-		: 450;
-	const initialOrderCount = storedOrderCount ? parseInt(storedOrderCount) : 33;
-	const initialRevenueCount = storedRevenueCount
-		? parseInt(storedRevenueCount)
-		: 9999;
+	const [filter, setFilter] = useState('today');
 
-	// สถานะสำหรับจำนวนผู้เข้าใช้, คนขับ, ออเดอร์, รายได้
-	const [userCount, setUserCount] = useState(initialUserCount);
-	const [driverCount, setDriverCount] = useState(initialDriverCount);
-	const [orderCount, setOrderCount] = useState(initialOrderCount);
-	const [revenueCount, setRevenueCount] = useState(initialRevenueCount);
+	// ฟังก์ชันเปลี่ยนฟิลเตอร์ (วันนี้, สัปดาห์, เดือน, ปี)
+	const handleFilterChange = (event) => {
+		setFilter(event.target.value);
+	};
 
-	// เพิ่มจำนวนทุกๆ 3 วินาที
+	// ฟังก์ชันในการคำนวณข้อมูลตามฟิลเตอร์
+	const applyFilter = (value) => {
+		switch (value) {
+			case 'week':
+				return {
+					data1: data1.map((entry) => ({
+						...entry,
+						Ordernow: entry.Ordernow * 7,
+						Booking: entry.Booking * 9,
+					})),
+				};
+			case 'month':
+				return {
+					data1: data1.map((entry) => ({
+						...entry,
+						Ordernow: entry.Ordernow * 60,
+						Booking: entry.Booking * 30,
+					})),
+				};
+			case 'year':
+				return {
+					data1: data1.map((entry) => ({
+						...entry,
+						Ordernow: entry.Ordernow * 365,
+						Booking: entry.Booking * 605,
+					})),
+				};
+			default:
+				return {
+					data1: data1,
+				};
+		}
+	};
+
+	// ฟังก์ชันสุ่มเพิ่มข้อมูล
 	useEffect(() => {
 		const interval = setInterval(() => {
-			// อัปเดตจำนวนผู้ใช้
-			setUserCount((prevCount) => {
-				const newUserCount = prevCount + 2; // เพิ่มจำนวนผู้ใช้ทีละ 2
-				localStorage.setItem('userCount', newUserCount); // บันทึกค่าลง localStorage
-				return newUserCount;
-			});
+			setUserCount((prev) => prev + Math.floor(Math.random() * 10) + 1); // เพิ่มผู้เข้าใช้ 1-10
+			setDriverCount((prev) => prev + Math.floor(Math.random() * 5) + 1); // เพิ่มคนขับ 1-5
+			setOrderCount((prev) => prev + Math.floor(Math.random() * 3) + 1); // เพิ่มจำนวนออเดอร์ 1-3
+			setRevenueCount((prev) => prev + Math.floor(Math.random() * 50) + 10); // เพิ่มรายได้ 10-50
+		}, 1000); // ทุกๆ 1 วินาที
 
-			// อัปเดตจำนวนคนขับ
-			setDriverCount((prevCount) => {
-				const newDriverCount = prevCount + 2; // เพิ่มจำนวนคนขับทีละ 2
-				localStorage.setItem('driverCount', newDriverCount); // บันทึกค่าลง localStorage
-				return newDriverCount;
-			});
-
-			// อัปเดตจำนวนออเดอร์
-			setOrderCount((prevCount) => {
-				const newOrderCount = prevCount + 2; // เพิ่มจำนวนออเดอร์ทีละ 2
-				localStorage.setItem('orderCount', newOrderCount); // บันทึกค่าลง localStorage
-				return newOrderCount;
-			});
-
-			// อัปเดตรายได้ (แบบสุ่ม)
-			setRevenueCount((prevCount) => {
-				const randomIncrement = Math.floor(Math.random() * 426) + 1; // สุ่มค่าเพิ่ม (1 ถึง 10)
-				const newRevenueCount = prevCount + randomIncrement; // เพิ่มค่าสุ่มเข้าไปในรายได้
-				localStorage.setItem('revenueCount', newRevenueCount); // บันทึกค่าลง localStorage
-				return newRevenueCount; // คืนค่ากลับไป
-			});
-		}, 2000); // อัปเดตทุกๆ 2 วินาที
-
-		// ล้าง interval เมื่อ component ถูก unmount
-		return () => clearInterval(interval);
+		return () => clearInterval(interval); // ลบ interval เมื่อ component ถูกทำลาย
 	}, []);
+
+	const filteredData = applyFilter(filter);
 
 	return (
 		<div>
@@ -113,6 +114,7 @@ function Dashboard() {
 					</div>
 				</div>
 
+				{/* กล่องคนขับ */}
 				<div className='box'>
 					<p className='Usernow'>คนขับ</p>
 					<p className='count'>{driverCount}</p>
@@ -124,6 +126,7 @@ function Dashboard() {
 					</div>
 				</div>
 
+				{/* กล่องจำนวนออเดอร์ */}
 				<div className='box'>
 					<p className='Usernow'>จำนวนออเดอร์</p>
 					<p className='count'>{orderCount}</p>
@@ -136,6 +139,7 @@ function Dashboard() {
 					</div>
 				</div>
 
+				{/* กล่องรายได้ */}
 				<div className='box'>
 					<p className='Usernow'>รายได้</p>
 					<p className='count'>{revenueCount}</p>
@@ -152,7 +156,27 @@ function Dashboard() {
 			{/* กราฟใหญ่ */}
 			<div className='large-box'>
 				<div className='Graph-container'>
-					<BarChart width={1300} height={450} data={data1}>
+					{/* ฟิลเตอร์เลือกช่วงเวลา */}
+					<select
+						value={filter}
+						onChange={handleFilterChange}
+						style={{
+							position: 'absolute',
+							right: 180,
+							top: 280,
+							padding: '8px',
+							fontSize: '14px',
+							zIndex: 10,
+						}}
+					>
+						<option value='today'>วันนี้</option>
+						<option value='week'>สัปดาห์</option>
+						<option value='month'>เดือน</option>
+						<option value='year'>ปี</option>
+					</select>
+
+					{/* กราฟแสดงข้อมูล */}
+					<BarChart width={1300} height={450} data={filteredData.data1}>
 						<CartesianGrid strokeDasharray='3 3' />
 						<XAxis dataKey='name' />
 						<YAxis />
@@ -162,7 +186,6 @@ function Dashboard() {
 						<Bar dataKey='Booking' fill='black' />
 					</BarChart>
 				</div>
-				<p className='Graph'></p>
 			</div>
 		</div>
 	);

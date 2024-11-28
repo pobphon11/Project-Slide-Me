@@ -11,7 +11,7 @@ const MapComponent = () => {
 				placeholder: mapRef.current,
 			});
 
-			const resultDiv = document.createElement('div');
+			// const resultDiv = document.createElement('div');
 			// resultDiv.style.position = 'absolute';
 			// resultDiv.style.top = '10px';
 			// resultDiv.style.right = '10px';
@@ -20,7 +20,7 @@ const MapComponent = () => {
 			// resultDiv.style.padding = '10px';
 			// resultDiv.style.overflow = 'auto';
 			// resultDiv.style.zIndex = '';
-			map.Route.placeholder(resultDiv);
+			// map.Route.placeholder(resultDiv);
 
 			map.Route.add(
 				new window.longdo.Marker(
@@ -35,50 +35,69 @@ const MapComponent = () => {
 
 	return (
 		<div
-			style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+			style={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+			}}
 		>
-			{/* แผนที่ */}
-			<div
-				ref={mapRef}
-				style={{
-					marginTop: '200px',
-					width: '70%',
-					height: '300px',
-					marginBottom: '20px',
-				}}
-			></div>
-			{/* ข้อมูลการเดินทาง */}
-			<div
-				style={{
-					width: '70%',
-					padding: '20px',
-					backgroundColor: '#f9f9f9',
-					border: '1px solid #ddd',
-					borderRadius: '5px',
-				}}
-			>
-				<h3>ข้อมูลการเดินทาง</h3>
-				<p>
-					<strong>ประเภทของรถ:</strong> {routeDetails.vehicleType}
-					<strong className='vehicleType'>
-						ประเภทของรถdsjfgkdsfhkjsdfhkudsfhku:
-					</strong>
-				</p>
-				<p>
-					<strong>ระยะทาง:</strong> {routeDetails.distance}
-				</p>
-				<p>
-					<strong>ระยะเวลา:</strong> {routeDetails.time}
-				</p>
-				<p>
-					<strong>ชื่อคนขับ:</strong> {routeDetails.driverName}
-				</p>
-				<p>
-					<strong>เบอร์โทรคนขับ:</strong> {routeDetails.driverPhone}
-				</p>
-				<p>
-					<strong>ค่าบหฟกหฟกริการ:</strong> {routeDetails.fare}
-				</p>
+			<div className='wrapper-container'>
+				<div
+					ref={mapRef}
+					style={{
+						marginTop: '20px',
+						width: '1000px',
+						height: '400px',
+						marginBottom: '20px',
+					}}
+				></div>
+				<div className='map-text-container'>
+					<h3 className='text-detail'>ข้อมูลการเดินทาง</h3>
+					<div className='details'>
+						<div className='detail'>
+							<strong>
+								<h4> ชื่อคนขับ</h4>
+								<p className='inside'>นายสมมุติ 001</p>
+							</strong>
+						</div>
+						<div className='detail'>
+							<strong>
+								<h4> ประเภทของรถ</h4>
+								<p className='inside'>รถสไลด์6ล้อ</p>
+							</strong>
+						</div>
+						<div className='detail'>
+							<strong>
+								<h4> ชื่อลูกค้า</h4>
+								<p className='inside'>นายสมมุติ 002</p>
+							</strong>
+						</div>
+						<div className='detail'>
+							<strong>
+								<h4> ราคา</h4>
+								<p className='inside'>1000บาท</p>
+							</strong>
+						</div>
+						<div className='detail'>
+							<strong>
+								<h4> วิธีการชำระเงิน</h4>
+								<p className='inside'> ชำระโดยบัตรเครดิต</p>
+							</strong>
+						</div>
+						<div className='detail'>
+							<strong>
+								<h4>ระยะทาง</h4>
+								<p className='inside'>8-15 กิโลเมตร</p>
+							</strong>
+						</div>
+						<div className='detail'>
+							<strong>
+								<h4>ระยะเวลา</h4>
+								<p className='inside'>00 ชั่วโมง 50นาที 50วินาที</p>
+							</strong>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);

@@ -39,14 +39,15 @@
     display: flex;
     justify-content: center;
 }
-
-.card-container {
-    padding: 15px;
-    box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 8px;
-    overflow: hidden;
+.card-container .card-img-top {
+    width: 100%; /* ครอบคลุมพื้นที่ทั้งหมดของการ์ด */
+    height: 200px; /* ตั้งความสูงที่ต้องการ */
+    object-fit: cover; /* ปรับให้ภาพไม่ผิดสัดส่วน */
+    border-top-left-radius: 8px; /* ตรงกับส่วนมุม */
+    border-top-right-radius: 8px;
+    transition: transform 0.3s ease;
 }
+
 .card-container:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);

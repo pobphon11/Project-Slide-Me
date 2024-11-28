@@ -34,3 +34,10 @@
     margin-left: 2rem;
     color: #fff  ;
 }
+
+
+.navbar-logo {
+    max-width: 60rem; 
+    max-height: 80px; 
+    object-fit: contain; 
+}

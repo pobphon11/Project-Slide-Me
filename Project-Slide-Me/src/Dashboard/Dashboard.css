@@ -1,17 +1,11 @@
 /* สไตล์สำหรับแถบด้านบน */
 
 /* สไตล์สำหรับ title และ profile */
-.profile {
-	width: 85%;
-	height: 50px;
-	display: flex;
-	color: white;
-}
 
 /* สไตล์สำหรับ container และกล่องสามกล่อง */
 .box-container {
 	display: flex;
-
+	margin-top: 9rem;
 	justify-content: space-between;
 	padding: 2rem;
 	height: 100%;

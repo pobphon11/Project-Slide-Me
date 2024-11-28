@@ -10,7 +10,7 @@ import {
 	CartesianGrid,
 	Bar,
 } from 'recharts';
-const data = [
+const Userdata = [
 	{ name: 'Page A', uv: 3500 },
 	{ name: 'Page B', uv: 3000 },
 	{ name: 'Page C', uv: 2000 },
@@ -19,7 +19,7 @@ const data = [
 	{ name: 'Page F', uv: 2390 },
 	{ name: 'Page G', uv: 650 },
 ];
-const data1 = [
+const Orderdata = [
 	{ name: 'จันทร์', Ordernow: 4000, Booking: 1400 },
 	{ name: 'อังคาร', Ordernow: 3700, Booking: 400 },
 	{ name: 'พุธ', Ordernow: 5550, Booking: 2400 },
@@ -48,7 +48,7 @@ function Dashboard() {
 		switch (value) {
 			case 'week':
 				return {
-					data1: data1.map((entry) => ({
+					Orderdata: Orderdata.map((entry) => ({
 						...entry,
 						Ordernow: entry.Ordernow * 7,
 						Booking: entry.Booking * 9,
@@ -56,7 +56,7 @@ function Dashboard() {
 				};
 			case 'month':
 				return {
-					data1: data1.map((entry) => ({
+					Orderdata: Orderdata.map((entry) => ({
 						...entry,
 						Ordernow: entry.Ordernow * 60,
 						Booking: entry.Booking * 30,
@@ -64,7 +64,7 @@ function Dashboard() {
 				};
 			case 'year':
 				return {
-					data1: data1.map((entry) => ({
+					Orderdata: Orderdata.map((entry) => ({
 						...entry,
 						Ordernow: entry.Ordernow * 365,
 						Booking: entry.Booking * 605,
@@ -72,7 +72,7 @@ function Dashboard() {
 				};
 			default:
 				return {
-					data1: data1,
+					Orderdata: Orderdata,
 				};
 		}
 	};
@@ -93,13 +93,6 @@ function Dashboard() {
 
 	return (
 		<div>
-			{/* แถบด้านบน */}
-			<div className='Dashboard-container'>
-				<div>
-					<CgProfile className='profile' onClick={() => {}} />
-				</div>
-			</div>
-
 			{/* กล่องสามกล่องด้านล่าง */}
 			<div className='box-container'>
 				<div className='box'>
@@ -107,7 +100,7 @@ function Dashboard() {
 					<p className='count'>{userCount}</p>
 					<p className='Day'>วันนี้</p>
 					<div className='Barchart-container'>
-						<BarChart width={160} height={80} data={data}>
+						<BarChart width={160} height={80} data={Userdata}>
 							<Tooltip />
 							<Bar dataKey='uv' fill='#82ca9d' />
 						</BarChart>
@@ -120,7 +113,7 @@ function Dashboard() {
 					<p className='count'>{driverCount}</p>
 					<p className='Day'>วันนี้</p>
 					<div className='Barchart-container'>
-						<BarChart width={160} height={80} data={data}>
+						<BarChart width={160} height={80} data={Userdata}>
 							<Bar dataKey='uv' fill='#82ca9d' />
 						</BarChart>
 					</div>
@@ -132,7 +125,7 @@ function Dashboard() {
 					<p className='count'>{orderCount}</p>
 					<p className='Day'>วันนี้</p>
 					<div className='Barchart-container'>
-						<BarChart width={160} height={80} data={data}>
+						<BarChart width={160} height={80} data={Userdata}>
 							<Tooltip />
 							<Bar dataKey='uv' fill='#82ca9d' />
 						</BarChart>
@@ -145,7 +138,7 @@ function Dashboard() {
 					<p className='count'>{revenueCount}</p>
 					<p className='Day'>วันนี้</p>
 					<div className='Barchart-container'>
-						<BarChart width={160} height={80} data={data}>
+						<BarChart width={160} height={80} data={Userdata}>
 							<Tooltip />
 							<Bar dataKey='uv' fill='#82ca9d' />
 						</BarChart>
@@ -162,8 +155,8 @@ function Dashboard() {
 						onChange={handleFilterChange}
 						style={{
 							position: 'absolute',
-							right: 180,
-							top: 280,
+							right: 300,
+							top: 360,
 							padding: '8px',
 							fontSize: '14px',
 							zIndex: 10,
@@ -176,7 +169,7 @@ function Dashboard() {
 					</select>
 
 					{/* กราฟแสดงข้อมูล */}
-					<BarChart width={1300} height={450} data={filteredData.data1}>
+					<BarChart width={1300} height={450} data={filteredData.Orderdata}>
 						<CartesianGrid strokeDasharray='3 3' />
 						<XAxis dataKey='name' />
 						<YAxis />
